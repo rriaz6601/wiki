@@ -1,18 +1,19 @@
 # Rana Riaz Site
 
-Modern dark personal landing page for Dokploy using Docker Compose.
+Modern dark personal landing page built with Astro + Tailwind and deployed through Dokploy.
 
 ## Files
 
-- `docker-compose.yml` - static site deployment
-- `Dockerfile` - builds the nginx image with the site content included
-- `site/` - HTML and CSS for the landing page
+- `docker-compose.yml` - Dokploy deployment entrypoint
+- `Dockerfile` - multi-stage build for Astro + Caddy
+- `src/` - Astro pages, layouts, and styles
+- `Caddyfile` - serves the static build under `/wiki`
 
 ## Dokploy setup
 
 1. Create a project in Dokploy.
 2. Create a Docker Compose application from this repository.
-3. Use branch `main` after merging the PR.
+3. Use branch `main`.
 4. Deploy the app.
 
 ## Notes
@@ -20,4 +21,4 @@ Modern dark personal landing page for Dokploy using Docker Compose.
 - The site is routed at `https://ranariaz.duckdns.org/wiki`.
 - The compose stack expects the external Docker network `dokploy-network`.
 - No database or runtime secrets are required.
-- The site content is baked into the image at build time so Dokploy does not rely on bind mounts.
+- The Astro build uses `base=/wiki` so assets resolve correctly under the subpath.

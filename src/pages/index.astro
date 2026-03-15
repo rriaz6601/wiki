@@ -1,0 +1,121 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const areas = [
+  "Software engineering",
+  "Automation",
+  "Linux servers",
+  "Networking",
+  "Docker and deployment",
+  "Systems integration",
+  "Troubleshooting",
+  "Technical strategy",
+];
+
+const focus = [
+  "Building practical self-hosted systems",
+  "Designing clean deployment flows",
+  "Improving networking and remote access setups",
+  "Turning rough ideas into reliable implementations",
+];
+---
+
+<BaseLayout>
+  <main class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.14),transparent_30%),radial-gradient(circle_at_top_right,rgba(168,85,247,0.16),transparent_26%)]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:36px_36px] [mask-image:linear-gradient(to_bottom,rgba(255,255,255,0.28),transparent)]"></div>
+
+    <section class="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 pb-14 pt-8 sm:px-8 lg:px-10">
+      <div class="rounded-full border border-sky-400/20 bg-slate-900/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-sky-300 backdrop-blur">
+        Rana Riaz
+      </div>
+
+      <div class="mt-8 grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+        <section class="rounded-[2rem] border border-white/10 bg-slate-900/70 p-8 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-10">
+          <p class="text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">Engineer</p>
+          <h1 class="mt-5 max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-6xl">
+            Broad technical range, calm execution, and a bias toward useful systems.
+          </h1>
+          <p class="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+            I work across software, infrastructure, networking, automation, and systems. I like elegant solutions,
+            but I care even more that they work well in the real world.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#about" class="rounded-full bg-sky-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5">
+              Explore profile
+            </a>
+            <a href="#focus" class="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:-translate-y-0.5">
+              Current focus
+            </a>
+          </div>
+        </section>
+
+        <section class="rounded-[2rem] border border-white/10 bg-slate-900/70 p-8 shadow-2xl shadow-black/30 backdrop-blur-xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.3em] text-violet-300">Snapshot</p>
+          <div class="mt-6 space-y-4">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <div class="text-xl font-semibold text-white">Broad</div>
+              <div class="mt-1 text-sm text-slate-300">Technical range across apps, infra, and networks</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <div class="text-xl font-semibold text-white">Hands-on</div>
+              <div class="mt-1 text-sm text-slate-300">Builder mindset from idea to deployment</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <div class="text-xl font-semibold text-white">Calm</div>
+              <div class="mt-1 text-sm text-slate-300">Comfortable debugging messy real-world problems</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="mt-5 grid gap-5 lg:grid-cols-3">
+        <section id="about" class="rounded-[2rem] border border-white/10 bg-slate-900/60 p-8 backdrop-blur-xl lg:col-span-2">
+          <p class="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300">About</p>
+          <h2 class="mt-4 text-2xl font-semibold text-white sm:text-3xl">A bit of a lot, with enough depth to ship.</h2>
+          <div class="mt-5 space-y-4 text-slate-300 leading-8">
+            <p>
+              My strength is range. I can move between product thinking, code, deployment, networking, debugging, and operations without losing the thread.
+            </p>
+            <p>
+              I like practical engineering: clean enough to maintain, thoughtful enough to scale, and simple enough to survive contact with reality.
+            </p>
+          </div>
+        </section>
+
+        <section class="rounded-[2rem] border border-white/10 bg-slate-900/60 p-8 backdrop-blur-xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.28em] text-violet-300">Working style</p>
+          <blockquote class="mt-5 border-l-2 border-sky-300/50 pl-4 text-lg leading-8 text-slate-200">
+            “I like systems that are clear, resilient, and genuinely useful.”
+          </blockquote>
+        </section>
+      </div>
+
+      <div class="mt-5 grid gap-5 lg:grid-cols-2">
+        <section class="rounded-[2rem] border border-white/10 bg-slate-900/60 p-8 backdrop-blur-xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300">Areas</p>
+          <div class="mt-5 flex flex-wrap gap-3">
+            {areas.map((item) => (
+              <span class="rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-sm text-slate-100">
+                {item}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        <section id="focus" class="rounded-[2rem] border border-white/10 bg-slate-900/60 p-8 backdrop-blur-xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.28em] text-violet-300">Current focus</p>
+          <ul class="mt-5 space-y-4 text-slate-300">
+            {focus.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-2 h-2.5 w-2.5 rounded-full bg-sky-300"></span>
+                <span class="leading-7">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

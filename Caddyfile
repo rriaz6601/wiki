@@ -1,0 +1,9 @@
+:80 {
+  handle_path /wiki* {
+    root * /srv
+    try_files {path} /index.html
+    file_server
+  }
+
+  respond 404
+}
