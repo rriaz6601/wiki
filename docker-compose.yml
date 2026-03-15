@@ -1,42 +1,10 @@
 services:
-  wiki-db:
-    image: mariadb:11
+  site:
+    image: nginx:1.27-alpine
     restart: unless-stopped
-    environment:
-      TZ: ${TZ}
-      MYSQL_ROOT_PASSWORD: ${DB_PASS}
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASS}
-    command:
-      - --character-set-server=utf8mb4
-      - --collation-server=utf8mb4_unicode_ci
     volumes:
-      - wiki_db_data:/var/lib/mysql
+      - ./site:/usr/share/nginx/html:ro
     networks:
-      - wiki
-
-  wiki:
-    image: lscr.io/linuxserver/bookstack:latest
-    restart: unless-stopped
-    depends_on:
-      - wiki-db
-    environment:
-      PUID: ${PUID}
-      PGID: ${PGID}
-      TZ: ${TZ}
-      APP_URL: ${APP_URL}
-      APP_NAME: ${APP_NAME}
-      DB_HOST: ${DB_HOST}
-      DB_PORT: ${DB_PORT}
-      DB_USER: ${DB_USER}
-      DB_PASS: ${DB_PASS}
-      DB_DATABASE: ${DB_DATABASE}
-      APP_KEY: ${APP_KEY}
-    volumes:
-      - wiki_app_data:/config
-    networks:
-      - wiki
       - dokploy-network
     labels:
       - traefik.enable=true
@@ -55,12 +23,6 @@ services:
       - traefik.http.middlewares.wiki-strip.stripprefix.prefixes=/wiki
       - traefik.http.services.wiki.loadbalancer.server.port=80
 
-volumes:
-  wiki_db_data:
-  wiki_app_data:
-
 networks:
   dokploy-network:
     external: true
-  wiki:
-    driver: bridge
