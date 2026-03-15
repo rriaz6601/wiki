@@ -1,21 +1,21 @@
-# Rana Riaz Wiki
+# Rana Riaz Site
 
-BookStack deployment for Dokploy using Docker Compose.
+Modern dark personal landing page for Dokploy using Docker Compose.
 
 ## Files
 
-- `docker-compose.yml` - app and database services
-- `.env.example` - required environment variables template
+- `docker-compose.yml` - static site deployment
+- `site/` - HTML and CSS for the landing page
 
 ## Dokploy setup
 
 1. Create a project in Dokploy.
 2. Create a Docker Compose application from this repository.
-3. Set the required environment variables in Dokploy using `.env.example`.
+3. Use branch `main` after merging the PR.
 4. Deploy the app.
 
 ## Notes
 
-- Do not commit the real `.env` file.
-- The app is routed at `https://ranariaz.duckdns.org/wiki`.
+- The site is routed at `https://ranariaz.duckdns.org/wiki`.
 - The compose stack expects the external Docker network `dokploy-network`.
+- No database or runtime secrets are required.
