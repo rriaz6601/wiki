@@ -4,8 +4,184 @@
 
 :root {
   color-scheme: dark;
+  --page-background: #020617;
+  --page-foreground: #e2e8f0;
+  --panel-border: rgba(148, 163, 184, 0.18);
+  --panel-background: rgba(15, 23, 42, 0.68);
+  --panel-shadow: 0 24px 80px rgba(2, 6, 23, 0.5);
+}
+
+html {
+  background:
+    radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 30%),
+    linear-gradient(180deg, #020617 0%, #020617 32%, #0f172a 100%);
 }
 
 body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: transparent;
+  color: var(--page-foreground);
+}
+
+::selection {
+  background: rgba(125, 211, 252, 0.28);
+  color: white;
+}
+
+@layer base {
+  * {
+    @apply border-slate-700;
+  }
+
+  body {
+    @apply min-h-screen;
+  }
+
+  a {
+    @apply outline-none transition duration-200;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    @apply ring-2 ring-sky-300 ring-offset-2 ring-offset-slate-950;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply relative isolate overflow-hidden;
+  }
+
+  .ambient {
+    @apply pointer-events-none absolute inset-auto h-[28rem] w-[28rem] rounded-full blur-3xl;
+  }
+
+  .ambient-one {
+    background: rgba(56, 189, 248, 0.18);
+    @apply left-[-8rem] top-[-4rem];
+  }
+
+  .ambient-two {
+    background: rgba(168, 85, 247, 0.16);
+    @apply bottom-[-8rem] right-[-7rem];
+  }
+
+  .grid-overlay {
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    background-position: center;
+    background-size: 46px 46px;
+    mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.65), transparent 78%);
+    @apply pointer-events-none absolute inset-0 opacity-40;
+  }
+
+  .glass-panel {
+    border: 1px solid var(--panel-border);
+    background: var(--panel-background);
+    box-shadow: var(--panel-shadow);
+    @apply rounded-[2rem] backdrop-blur-2xl;
+  }
+
+  .feature-panel {
+    background:
+      linear-gradient(145deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.75)),
+      radial-gradient(circle at top right, rgba(56, 189, 248, 0.18), transparent 36%);
+    border: 1px solid rgba(125, 211, 252, 0.14);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 28px 90px rgba(2, 6, 23, 0.55);
+    @apply rounded-[2.25rem];
+  }
+
+  .section-kicker {
+    @apply text-xs font-semibold uppercase tracking-[0.34em] text-sky-200/80;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em];
+  }
+
+  .badge-sky {
+    @apply border-sky-300/20 bg-sky-300/10 text-sky-100;
+  }
+
+  .badge-white {
+    @apply border-white/10 bg-white/5 text-slate-200;
+  }
+
+  .nav-chip {
+    @apply rounded-full border border-white/10 bg-white/5 px-4 py-2 text-slate-200 hover:-translate-y-0.5 hover:border-sky-300/25 hover:bg-sky-300/10 hover:text-white;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-sky-300 px-5 py-3 text-sm font-semibold text-slate-950 hover:-translate-y-0.5 hover:bg-sky-200;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/10;
+  }
+
+  .stat-card {
+    @apply rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur;
+  }
+
+  .knowledge-chip {
+    @apply rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-sm text-slate-100;
+  }
+
+  .capability-card {
+    box-shadow: 0 20px 70px rgba(2, 6, 23, 0.45);
+    @apply relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900/70 p-7 backdrop-blur-xl;
+  }
+
+  .capability-card::after {
+    content: "";
+    @apply pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent;
+  }
+
+  .capability-card-sky {
+    background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.15), transparent 44%), rgba(15, 23, 42, 0.78);
+  }
+
+  .capability-card-violet {
+    background: radial-gradient(circle at top left, rgba(168, 85, 247, 0.16), transparent 44%), rgba(15, 23, 42, 0.78);
+  }
+
+  .capability-card-emerald {
+    background: radial-gradient(circle at top left, rgba(52, 211, 153, 0.16), transparent 44%), rgba(15, 23, 42, 0.78);
+  }
+
+  .capability-card-amber {
+    background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.18), transparent 44%), rgba(15, 23, 42, 0.78);
+  }
+
+  .capability-dot {
+    box-shadow: 0 0 24px rgba(125, 211, 252, 0.85);
+    @apply h-3 w-3 rounded-full bg-sky-300;
+  }
+
+  .timeline-row {
+    @apply grid gap-4 rounded-[1.75rem] border border-white/10 bg-white/5 p-5 sm:grid-cols-[auto_1fr] sm:items-start;
+  }
+
+  .timeline-index {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-sky-300/20 bg-sky-300/10 text-sm font-semibold text-sky-100;
+  }
+
+  .principle-row {
+    @apply flex items-start gap-4 rounded-[1.5rem] border border-white/10 bg-white/5 px-5 py-4;
+  }
+
+  .principle-marker {
+    @apply mt-2 h-2.5 w-2.5 rounded-full bg-sky-300;
+  }
+
+  .focus-row {
+    @apply flex items-start gap-4 rounded-[1.75rem] border border-white/10 bg-white/5 px-5 py-5;
+  }
+
+  .focus-icon {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-2xl border border-sky-300/20 bg-sky-300/10 text-lg font-semibold text-sky-100;
+  }
 }

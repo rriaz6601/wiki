@@ -10,6 +10,8 @@ const {
   title = "Rana Riaz | Engineer",
   description = "Engineer focused on software, systems, infrastructure, networking, and practical problem-solving.",
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
 ---
 
 <!doctype html>
@@ -19,6 +21,16 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#020617" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="canonical" href={canonical} />
   </head>
   <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
     <slot />
