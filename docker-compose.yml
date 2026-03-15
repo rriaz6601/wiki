@@ -9,12 +9,12 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=dokploy-network
-      - traefik.http.routers.wiki-web.rule=Host(`ranariaz.duckdns.org`) && PathPrefix(`/wiki`)
+      - traefik.http.routers.wiki-web.rule=Host(`wiki-ranariaz.duckdns.org`)
       - traefik.http.routers.wiki-web.entrypoints=web
       - traefik.http.routers.wiki-web.middlewares=wiki-https
       - traefik.http.routers.wiki-web.priority=200
       - traefik.http.middlewares.wiki-https.redirectscheme.scheme=https
-      - traefik.http.routers.wiki.rule=Host(`ranariaz.duckdns.org`) && PathPrefix(`/wiki`)
+      - traefik.http.routers.wiki.rule=Host(`wiki-ranariaz.duckdns.org`)
       - traefik.http.routers.wiki.entrypoints=websecure
       - traefik.http.routers.wiki.tls=true
       - traefik.http.routers.wiki.tls.certresolver=letsencrypt

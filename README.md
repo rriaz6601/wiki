@@ -7,7 +7,7 @@ Modern dark personal landing page built with Astro + Tailwind and deployed throu
 - `docker-compose.yml` - Dokploy deployment entrypoint
 - `Dockerfile` - multi-stage build for Astro + Caddy
 - `src/` - Astro pages, layouts, and styles
-- `Caddyfile` - serves the static build under `/wiki`
+- `Caddyfile` - serves the static build at the site root
 
 ## Dokploy setup
 
@@ -18,7 +18,7 @@ Modern dark personal landing page built with Astro + Tailwind and deployed throu
 
 ## Notes
 
-- The site is routed at `https://ranariaz.duckdns.org/wiki`.
+- The site is routed at `https://wiki-ranariaz.duckdns.org`.
 - The compose stack expects the external Docker network `dokploy-network`.
 - No database or runtime secrets are required.
-- The Astro build uses `base=/wiki` so assets resolve correctly under the subpath.
+- The Astro build targets the dedicated wiki hostname directly.
